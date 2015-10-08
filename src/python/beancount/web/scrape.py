@@ -137,14 +137,11 @@ def scrape(filename, callback, port, ignore_regexp, quiet=True, extra_args=None)
     # Create a set of valid arguments to run the app.
     argparser = argparse.ArgumentParser()
     group = web.add_web_arguments(argparser)
-    group.set_defaults(filename=filename,
-                       port=port,
-                       quiet=quiet)
-
-    all_args = [filename]
-    if extra_args:
-        all_args.extend(extra_args)
-    args = argparser.parse_args(args=all_args)
+    if extra_args is None:
+        extra_args = argparse.Namespace()
+    extra_args.port = port
+    extra_args.quiet = quiet
+    args = argparser.parse_args(args=[filename], namespace=extra_args)
 
     thread = web.thread_server_start(args)
 

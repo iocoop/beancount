@@ -1,5 +1,6 @@
 __author__ = "Martin Blais <blais@furius.ca>"
 
+import argparse
 import unittest
 import urllib.parse
 from os import path
@@ -44,7 +45,9 @@ class TestWeb(unittest.TestCase):
         self.scrape('simple/basic.beancount')
 
     def test_scrape_basic_view(self):
-        self.scrape('simple/basic.beancount', extra_args=['--view', 'year/2013'])
+        self.scrape('simple/basic.beancount',
+                    extra_args=argparse.Namespace(view='year/2013')
+)
 
     def test_scrape_starterkit(self):
         self.scrape('simple/starter.beancount')

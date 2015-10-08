@@ -134,7 +134,8 @@ def bake_to_directory(webargs, output_dir, quiet=False):
                                                  callback,
                                                  webargs.port,
                                                  '/(context|view/component|.*/doc)/',
-                                                 quiet)
+                                                 quiet,
+                                                 webargs)
 
 
 def archive(command_template, directory, archive, quiet=False):
