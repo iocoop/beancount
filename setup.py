@@ -18,7 +18,7 @@ if sys.version_info[:2] < (3,3):
 
 # Import setup().
 setup_extra_kwargs = {}
-from distutils.core import setup, Extension
+from setuptools import setup, Extension
 
 # Unused support for setuptools. Setuptools is seriously broken:
 #
@@ -132,7 +132,7 @@ setup(
     scripts=install_scripts,
 
     ext_modules=[
-        Extension("beancount/parser/_parser",
+        Extension("beancount.parser._parser",
                   sources=[
                       "src/python/beancount/parser/lexer.c",
                       "src/python/beancount/parser/grammar.c",
@@ -141,6 +141,13 @@ setup(
                   define_macros=[('PARSER_SOURCE_HASH',
                                   '"{}"'.format(hash_parser_source_files()))]),
     ],
+
+    install_requires=[
+        'python-dateutil',
+        'bottle',
+        'ply',
+        'lxml',
+        ],
 
     # Add optional arguments that only work with some variants of setup().
     **setup_extra_kwargs
