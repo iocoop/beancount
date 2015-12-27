@@ -2,6 +2,12 @@
    beancount: Double-Entry Accounting from Text Files
 ========================================================
 
+**NOTE**: This is a fork of https://bitbucket.org/blais/beancount in order to
+maintain a stable, supported version of beancount for IO Cooperative accounting
+purposes. It will usually not be up-to-date with the latest upstream
+development. Please follow the upstream project for all uses of beancount
+outside of IO Cooperative.
+
 .. contents::
 ..
     1  Description
